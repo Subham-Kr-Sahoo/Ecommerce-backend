@@ -1,0 +1,11 @@
+ReferenceError: pass is not defined
+    at /Users/subhamkumarsahoo/Desktop/NODE/OnlineGrocery/controllers/login_controller.js:1159:17
+    at Object.CheckParameterValid (/Users/subhamkumarsahoo/Desktop/NODE/OnlineGrocery/helpers/helpers.js:62:20)
+    at /Users/subhamkumarsahoo/Desktop/NODE/OnlineGrocery/controllers/login_controller.js:1158:20
+    at /Users/subhamkumarsahoo/Desktop/NODE/OnlineGrocery/controllers/login_controller.js:1199:32
+    at Query.<anonymous> (/Users/subhamkumarsahoo/Desktop/NODE/OnlineGrocery/helpers/db_helper.js:69:24)
+    at Query.<anonymous> (/Users/subhamkumarsahoo/Desktop/NODE/OnlineGrocery/node_modules/mysql/lib/Connection.js:526:10)
+    at Query._callback (/Users/subhamkumarsahoo/Desktop/NODE/OnlineGrocery/node_modules/mysql/lib/Connection.js:488:16)
+    at Sequence.end (/Users/subhamkumarsahoo/Desktop/NODE/OnlineGrocery/node_modules/mysql/lib/protocol/sequences/Sequence.js:83:24)
+    at Query._handleFinalResultPacket (/Users/subhamkumarsahoo/Desktop/NODE/OnlineGrocery/node_modules/mysql/lib/protocol/sequences/Query.js:149:8)
+    at Query.EofPacket (/Users/subhamkumarsahoo/Desktop/NODE/OnlineGrocery/node_modules/mysql/lib/protocol/sequences/Query.js:133:8)

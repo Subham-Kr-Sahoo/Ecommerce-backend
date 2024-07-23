@@ -1,0 +1,13 @@
+Error: ENOENT: no such file or directory, rename '/var/folders/xm/5lmdy5_57p70y2y70_h54kx40000gn/T/toVBG3_OxtxvWarQSsN9cB3-.png' -> './public/img/product/2024070310000909gYpJiHJndkVBJV60bLoM.png'Error: ENOENT: no such file or directory, rename '/var/folders/xm/5lmdy5_57p70y2y70_h54kx40000gn/T/NS4JhBt9CwRM813_wC38H-_m.png' -> './public/img/product/20240703100009099BeojSlodX0Ic6zeRt8S.png'TypeError: nutritionDataArr.forEach is not a function
+    at /Users/subhamkumarsahoo/Desktop/NODE/OnlineGrocery/controllers/admin_controller.js:484:50
+    at Query.<anonymous> (/Users/subhamkumarsahoo/Desktop/NODE/OnlineGrocery/helpers/db_helper.js:69:24)
+    at Query.<anonymous> (/Users/subhamkumarsahoo/Desktop/NODE/OnlineGrocery/node_modules/mysql/lib/Connection.js:526:10)
+    at Query._callback (/Users/subhamkumarsahoo/Desktop/NODE/OnlineGrocery/node_modules/mysql/lib/Connection.js:488:16)
+    at Sequence.end (/Users/subhamkumarsahoo/Desktop/NODE/OnlineGrocery/node_modules/mysql/lib/protocol/sequences/Sequence.js:83:24)
+    at Query._handleFinalResultPacket (/Users/subhamkumarsahoo/Desktop/NODE/OnlineGrocery/node_modules/mysql/lib/protocol/sequences/Query.js:149:8)
+    at Query.OkPacket (/Users/subhamkumarsahoo/Desktop/NODE/OnlineGrocery/node_modules/mysql/lib/protocol/sequences/Query.js:74:10)
+    at Protocol._parsePacket (/Users/subhamkumarsahoo/Desktop/NODE/OnlineGrocery/node_modules/mysql/lib/protocol/Protocol.js:291:23)
+    at Parser._parsePacket (/Users/subhamkumarsahoo/Desktop/NODE/OnlineGrocery/node_modules/mysql/lib/protocol/Parser.js:433:10)
+    at Parser.write (/Users/subhamkumarsahoo/Desktop/NODE/OnlineGrocery/node_modules/mysql/lib/protocol/Parser.js:43:10)
+
+    i called the function to save the image but i saved the folder in name of category but written it as categoty 
