@@ -33,7 +33,7 @@ function reconnect(connection,callback){
 
     connection.on('error',(err) => {
         helper.Dlog('\n\t -------App is connection crash DB helper('+helper.server_YYYYMMDD_HHmmss()+')-------');
-
+        
         if(err.code === "PROTOCOL_CONNECTION_LOST"){
             helper.Dlog("/!\\ PROTOCOL_CONNECTION_LOST cannot establish a connection with the database. /!\\("+err.code+")");
             reconnect(db,callback)

@@ -629,7 +629,7 @@ module.exports.controller = (app,io,socket_list)=>{
         helper.Dlog(req.body)
         var reqObj = req.body
         checkAccessToken(req.headers, res, (userObj) => {
-            db.query("SELECT `promo_code_id`, `code`, `title`, `description`, `type`, `min_order_amount`, `max_discount_amount`, `offer_price`, `start_date`, `end_date`, `created_date`, `modify_date` FROM `promo_code_details` WHERE `start_date` <= NOW() AND `end_date` >= NOW()  AND `status` = 1 ORDER BY `start_date` ", [], (err, result) => {
+            db.query("SELECT `promo_code_id`, `code`, `title`, `description`, `type`, `min_order_amount`, `max_discount_amount`, `offer_price`, `start_date`, `end_date`, `created_date`, `modify_date` FROM `promo_code_details` WHERE `start_date` <= NOW() AND `status` = 1 ORDER BY `start_date` ", [], (err, result) => {
                 if (err) {
                     helper.ThrowHtmlError(err, res)
                     return
@@ -1269,6 +1269,23 @@ module.exports.controller = (app,io,socket_list)=>{
         })
 
 
+    })
+
+    app.post('/api/app/user_name',(req,res)=>{
+        helper.Dlog(req.body)
+        var reqObj = req.body
+        checkAccessToken(req.headers, res, (uObj) => {
+            var access_token = req.headers["access_token"]
+            db.query("SELECT `username`,`email` FROM `user_details` WHERE `status` = 1 AND auth_token = ? ",[access_token],(err,result)=>{
+                if (err) {
+                    helper.ThrowHtmlError(err, res);
+                    return;
+                }
+                res.json({
+                    "status": "1", "payload":result[0], "message": msg_success
+                })
+            })
+        },"1")
     })
 
 }

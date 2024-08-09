@@ -1,0 +1,11 @@
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1116:18)
+    at afterConnectMultiple (node:net:1683:7)
+    --------------------
+    at Protocol._enqueue (/Users/subhamkumarsahoo/Desktop/NODE/OnlineGrocery/node_modules/mysql/lib/protocol/Protocol.js:144:48)
+    at Protocol.handshake (/Users/subhamkumarsahoo/Desktop/NODE/OnlineGrocery/node_modules/mysql/lib/protocol/Protocol.js:51:23)
+    at Connection.connect (/Users/subhamkumarsahoo/Desktop/NODE/OnlineGrocery/node_modules/mysql/lib/Connection.js:116:18)
+    at reconnect (/Users/subhamkumarsahoo/Desktop/NODE/OnlineGrocery/helpers/db_helper.js:18:16)
+    at Timeout._onTimeout (/Users/subhamkumarsahoo/Desktop/NODE/OnlineGrocery/helpers/db_helper.js:25:17)
+    at listOnTimeout (node:internal/timers:573:17)
+    at process.processTimers (node:internal/timers:514:7)

@@ -87,7 +87,7 @@ module.exports = {
         var chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
         var result = ''
         for (let i = 20; i>0; i--) {
-            result += chars[Math.floor(Math.random() * chars.length)];
+            result += chars[Math.floor(Math.random() * chars.length)]; 
         }
         return result;
     },
