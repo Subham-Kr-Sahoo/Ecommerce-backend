@@ -747,7 +747,7 @@ module.exports.controller = (app,io,socket_list)=>{
                                 if ((reqObj.deliver_type == "1" && pResult[2].length == 0)) {
                                     res.json({
                                         'status': "0"
-                                        , 'message': "Please select address"
+                                        , 'message':"Please select address"
                                     })
                                     return
                                 }
@@ -784,7 +784,7 @@ module.exports.controller = (app,io,socket_list)=>{
                                         } else {
                                             res.json({
                                                 'status': "0"
-                                                , 'message': "Promo Code not apply need min order: $" + pResult[1][0].min_order_amount
+                                                , 'message': "Promo Code not apply need a minimum order of ₹" + pResult[1][0].min_order_amount
                                             })
                                             return
                                         }
