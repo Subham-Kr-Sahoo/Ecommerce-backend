@@ -1109,6 +1109,34 @@ module.exports.controller = (app,io,socket_list)=>{
         }, "1")
     })
 
+    app.post('/api/app/notification_read',(req,res)=>{
+        helper.Dlog(req.body);
+        var reqObj = req.body
+
+        checkAccessToken(req.headers,res,(userObj)=>{
+            helper.CheckParameterValid(res,reqObj,["notification_id"],()=>{
+                db.query("UPDATE `notification_detail` SET `is_read` = '2', `modify_date` = NOW() WHERE `user_id` = ? AND `status` = 1 AND `notification_id`= ?",[userObj.user_id,reqObj.notification_id],(err,result)=>{
+                    if (err) {
+                        helper.ThrowHtmlError(err, res);
+                        return
+                    }
+    
+                    if (result.affectedRows > 0) {
+                        res.json({
+                            "status": "1",
+                            "message": msg_success
+                        })
+                    } else {
+                        res.json({
+                            "status": "0",
+                            "message": msg_failure
+                        })
+                    }
+                })
+            })
+        },"1")
+    })
+
     app.post('/api/app/update_profile', (req, res) => {
         helper.Dlog(req.body);
         var reqObj = req.body
