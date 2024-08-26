@@ -1212,7 +1212,6 @@ module.exports.controller = (app,io,socket_list)=>{
                     helper.ThrowHtmlError(err, res)
                     return
                 }
-
                 if (result.length > 0) {
                     var reset_code = helper.createNumber()
                     db.query("UPDATE `user_details` SET `reset_code` = ? WHERE `user_id` = ? ", [reset_code, result[0].user_id], (err, uResult) => {
@@ -1220,10 +1219,8 @@ module.exports.controller = (app,io,socket_list)=>{
                             helper.ThrowHtmlError(err, res)
                             return
                         }
-
-
                         if (uResult.affectedRows > 0) {
-                            res.json({ "status": "1", "message": msg_success })
+                            res.json({ "status": "1","payload":{"reset_code":reset_code},"message": msg_success })
                         } else {
                             res.json({
                                 "status": "0",
@@ -1247,20 +1244,19 @@ module.exports.controller = (app,io,socket_list)=>{
         var reqObj = req.body
 
         helper.CheckParameterValid(res, reqObj, ["email", "reset_code"], () => {
-            db.query("SELECT `user_id` FROM `user_details` WHERE `email` = ? AND `reset_code` ", [reqObj.email, reqObj.reset_code], (err, result) => {
+            db.query("SELECT `user_id` FROM `user_details` WHERE `email` = ? AND `reset_code` = ?", [reqObj.email, reqObj.reset_code], (err, result) => {
                 if (err) {
                     helper.ThrowHtmlError(err, res)
                     return
                 }
                 if (result.length > 0) {
-                    var reset_code = helper.createNumber()
-                    db.query("UPDATE `user_details` SET `reset_code` = ? WHERE `user_id` = ? ", [reset_code, result[0].user_id], (err, uResult) => {
+                    db.query("UPDATE `user_details` SET `user_id` = ? WHERE `reset_code` = ?", [result[0].user_id,reqObj.reset_code], (err, uResult) => {
                         if (err) {
                             helper.ThrowHtmlError(err, res)
                             return
                         }
                         if (uResult.affectedRows > 0) {
-                            res.json({ "status": "1", "payload": { "user_id": result[0].user_id, "reset_code": reset_code }, "message": msg_success })
+                            res.json({ "status": "1", "payload": { "user_id": result[0].user_id}, "message": msg_success })
                         } else {
                             res.json({
                                 "status": "0",
@@ -1271,7 +1267,7 @@ module.exports.controller = (app,io,socket_list)=>{
                 } else {
                     res.json({
                         "status": "0",
-                        "message": "user not exits"
+                        "message": "OTP did not matched"
                     })
                 }
             })
@@ -1281,9 +1277,9 @@ module.exports.controller = (app,io,socket_list)=>{
     app.post('/api/app/forgot_password_set_password', (req, res) => {
         helper.Dlog(req.body);
         var reqObj = req.body
-        helper.CheckParameterValid(res, reqObj, ["user_id", "reset_code", "new_password"], () => {
+        helper.CheckParameterValid(res, reqObj, ["user_id", "new_password"], () => {
             var reset_code = helper.createNumber()
-            db.query("UPDATE `user_details` SET `password` = ? , `reset_code` = ?  WHERE `user_id` = ? AND `reset_code` = ? ", [reqObj.new_password, reset_code, reqObj.user_id, reqObj.reset_code], (err, uResult) => {
+            db.query("UPDATE `user_details` SET `password` = ?  WHERE `user_id` = ? ", [reqObj.new_password,reqObj.user_id], (err, uResult) => {
                 if (err) {
                     helper.ThrowHtmlError(err, res)
                     return
