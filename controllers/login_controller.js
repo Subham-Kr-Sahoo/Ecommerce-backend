@@ -1184,10 +1184,13 @@ module.exports.controller = (app,io,socket_list)=>{
                         helper.ThrowHtmlError(err, res)
                         return
                     }
-
                     if (result.affectedRows > 0) {
                         res.json({ "status": "1", "message": msg_success })
-                    } else {
+                    }
+                    if ((userObj.current_password != reqObj.current_password)){
+                        res.json({ "status": "0", "message": "Invalid Current Password" })
+                    } 
+                     else {
                         res.json({
                             "status": "0",
                             "message": msg_failure
